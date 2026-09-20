@@ -4,4 +4,5 @@
 .text-link{border-radius:10px;padding:8px 12px;border:1px solid #c3d3b0;background:#edf3e3}
 .button:active,.nav-cta:active,.course-link:active,.text-link:active,.specialist-course a:active,.cert-open:active{transform:scale(.98)}
 @media(hover:hover){.button:hover,.nav-cta:hover,.course-link:hover,.text-link:hover,.specialist-course a:hover{transform:translateY(-2px);box-shadow:0 5px 14px #425b2c18}.course-link:hover,.text-link:hover,.specialist-course a:hover,.nav-cta:hover{background:#dce8cb;border-color:#9ab77e}.cert-open:hover{background:#d5e3c7}.button.light:hover{background:#ffffff12}}
+@media(max-width:900px){.nav nav{display:none}.menu-btn{display:block}}
 @media(prefers-reduced-motion:reduce){.button,.nav-cta,.course-link,.text-link,.specialist-course a,.cert-open{transition:none;transform:none!important}}
