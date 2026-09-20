@@ -1,0 +1,31 @@
+.gallery-page{padding-block:52px 90px}
+.gallery-intro{margin-bottom:34px}
+.gallery-identity{gap:12px;letter-spacing:0}
+.gallery-identity>img{width:48px;height:48px;flex:none;object-fit:cover;object-position:50% 20%;border-radius:50%;border:2px solid #b3c69a;box-shadow:0 4px 14px #3b512322}
+.gallery-identity>span{width:auto;height:auto;background:none;font-size:13px;line-height:1.8}
+.gallery-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-top:12px}
+.gallery-heading h1{font-size:clamp(36px,5vw,62px);line-height:1.45;margin:0 0 6px}
+.gallery-heading p{font-size:17px;line-height:2;color:#59674d;margin:0}
+.gallery-count{flex:none;border:1px solid #a9bd8e;border-radius:999px;background:#e3ecd4;padding:8px 18px;font-size:14px;color:#405b2c}
+.gallery-note{width:fit-content;max-width:760px;margin:22px 0 0;padding:11px 16px;border-radius:14px;background:#e8efde;color:#52634a;font-size:14px;line-height:1.9}
+.results-grid{columns:3 300px;column-gap:22px}
+.result-card{position:relative;display:block;width:100%;break-inside:avoid;margin:0 0 22px;padding:0;border:1px solid #c8d6b6;border-radius:25px;overflow:hidden;background:#e1e9d5;box-shadow:0 8px 24px #405b2c12;cursor:pointer;text-align:inherit;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.result-card img{display:block;width:100%;height:auto;background:#dfe7d4;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.result-card span{position:absolute;right:14px;bottom:14px;padding:6px 13px;border:1px solid #ffffff65;border-radius:999px;background:#244832df;color:#fff;font-size:13px;line-height:1.5;box-shadow:0 4px 12px #1d332555;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+@media(hover:hover){.result-card:hover{transform:translateY(-4px);border-color:#9ab77e;box-shadow:0 15px 32px #405b2c20}.result-card:hover img{transform:scale(1.015)}}
+.gallery-lightbox{width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:#fff;overflow:hidden}
+.gallery-lightbox::backdrop{background:#102017ec;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lightbox-stage{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;width:100%;height:100%;padding:28px;gap:16px}
+.lightbox-stage figure{min-width:0;max-width:min(980px,100%);max-height:calc(100vh - 56px);margin:auto;display:flex;flex-direction:column;align-items:center;gap:12px}
+.lightbox-stage figure img{display:block;max-width:100%;max-height:calc(100vh - 100px);width:auto;height:auto;border-radius:20px;box-shadow:0 20px 60px #0008;background:#e9eee1}
+.lightbox-stage figcaption{font-size:14px;color:#e9efdf;line-height:1.5}
+.lightbox-close,.lightbox-nav{display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid #ffffff55;border-radius:50%;background:#f3f6ebea;color:#244832;cursor:pointer;transition:transform .2s ease,background .2s ease}
+.lightbox-close{position:absolute;top:24px;right:24px;z-index:2}
+.lightbox-nav{justify-self:center}
+.lightbox-close svg,.lightbox-nav svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lightbox-close:hover,.lightbox-nav:hover{background:#fff;transform:scale(1.05)}
+body.lightbox-open{overflow:hidden}
+@media(max-width:1000px){.nav nav a{padding-inline:7px;font-size:13px}.results-grid{columns:2 280px}}
+@media(max-width:800px){.nav nav{display:none}.menu-btn{display:block}.gallery-page{padding-top:32px}.gallery-heading{display:block}.gallery-count{display:inline-flex;margin-top:18px}.results-grid{columns:2 240px}.lightbox-stage{grid-template-columns:52px minmax(0,1fr) 52px;padding:18px;gap:8px}.lightbox-close,.lightbox-nav{width:46px;height:46px}}
+@media(max-width:560px){.gallery-intro{text-align:center;margin-bottom:26px}.gallery-identity{justify-content:center}.gallery-heading h1{font-size:38px}.gallery-heading p{font-size:15px}.gallery-note{font-size:13px;margin-inline:auto}.results-grid{columns:1}.result-card{margin-bottom:18px;border-radius:21px}.lightbox-stage{display:block;padding:74px 14px 18px}.lightbox-stage figure{height:100%;justify-content:center}.lightbox-stage figure img{max-height:calc(100vh - 135px);border-radius:15px}.lightbox-nav{position:absolute;bottom:24px;z-index:2}.lightbox-prev{right:24px}.lightbox-next{left:24px}.lightbox-close{top:16px;right:16px}}
+@media(prefers-reduced-motion:reduce){.result-card,.result-card img,.lightbox-close,.lightbox-nav{transition:none}.result-card:hover,.result-card:hover img{transform:none}}
