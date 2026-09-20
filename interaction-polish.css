@@ -1,0 +1,7 @@
+.button,.nav-cta,.course-link,.text-link,.specialist-course a,.cert-open{transition:background-color .22s ease,color .22s ease,box-shadow .22s ease,transform .22s ease,border-color .22s ease}
+.course-link{justify-content:center;border:1px solid #c5d5b1;border-radius:14px;padding:12px 16px;background:#e8efde;text-align:center}
+.specialist-course a{border:1px solid #becfa9;border-radius:12px;padding:9px 15px;background:#f1f5e9;text-align:center}
+.text-link{border-radius:10px;padding:8px 12px;border:1px solid #c3d3b0;background:#edf3e3}
+.button:active,.nav-cta:active,.course-link:active,.text-link:active,.specialist-course a:active,.cert-open:active{transform:scale(.98)}
+@media(hover:hover){.button:hover,.nav-cta:hover,.course-link:hover,.text-link:hover,.specialist-course a:hover{transform:translateY(-2px);box-shadow:0 5px 14px #425b2c18}.course-link:hover,.text-link:hover,.specialist-course a:hover,.nav-cta:hover{background:#dce8cb;border-color:#9ab77e}.cert-open:hover{background:#d5e3c7}.button.light:hover{background:#ffffff12}}
+@media(prefers-reduced-motion:reduce){.button,.nav-cta,.course-link,.text-link,.specialist-course a,.cert-open{transition:none;transform:none!important}}

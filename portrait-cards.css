@@ -1,0 +1,37 @@
+.paths{align-items:stretch;gap:22px;padding-block:32px}.paths:after{display:none}
+.slide-card{--progress:0;display:flex;flex-direction:column;padding:24px 20px 18px;background:#e4ecd8;border:1px solid #edf3e3;border-radius:30px;box-shadow:0 8px 26px #465b3010;overflow:hidden;min-width:0}
+.slide-heading{margin:0;min-height:78px;align-items:flex-start;gap:12px}.slide-heading .number{font-size:20px;padding-top:2px}.paths h2{font-size:18px;line-height:1.8}.paths p{font-size:14px;line-height:1.9;margin-top:3px}
+.portrait-stage{position:relative;min-height:225px;flex:1;margin:12px -8px 18px;isolation:isolate}.skin-portrait{position:absolute;bottom:0;width:52%;aspect-ratio:3/4;background-image:url('skin-portraits.png');background-size:200% 100%;background-repeat:no-repeat;border-radius:26px;transition:opacity .3s ease,transform .3s ease;mask-image:linear-gradient(to bottom,#000 88%,transparent 100%)}
+.portrait-sad{right:0;background-position:100% 50%;opacity:calc(1 - var(--progress));transform:translateX(calc(var(--progress) * 8px))}.portrait-happy{left:0;background-position:0% 50%;opacity:var(--progress);transform:translateX(calc((1 - var(--progress)) * -8px))}
+.skin-slide{flex-shrink:0;height:76px;background:#d3dfc2;background-image:none!important;box-shadow:inset 0 2px 5px #586b3330,0 1px 0 #fff9;border:1px solid #c3d2af;border-radius:23px;overflow:hidden}.slide-instruction{color:#3a4f2d;font-size:13px;text-shadow:none}.slide-instruction:before{display:none}.slide-handle{color:#758665}.slide-fallback{font-size:13px;margin-top:13px}.portrait-note{font-size:11px;line-height:1.8;text-align:center;color:#657458;margin-top:9px}
+.skin-portrait{aspect-ratio:1;width:68%}
+.slide-card:has(.is-dragging) .skin-portrait{transition:none}
+@media(max-width:1000px) and (min-width:701px){.paths{gap:12px}.slide-card{padding:18px 12px 15px;border-radius:24px}.paths h2{font-size:16px}.paths p{font-size:13px}.portrait-stage{min-height:185px}.slide-instruction{font-size:12px}.slide-heading{min-height:95px}}
+@media(max-width:700px){.paths{gap:22px;padding-block:24px}.slide-card{padding:24px 20px 18px}.slide-heading{min-height:65px}.paths h2{font-size:19px}.paths p{font-size:14px}.portrait-stage{min-height:240px;margin-block:8px 20px}.skin-portrait{width:51%;max-width:200px}.slide-instruction{font-size:14px}.portrait-note{font-size:12px}}
+@media(max-width:700px){.skin-portrait{width:68%;max-width:260px}.portrait-stage{min-height:260px}}
+@media(prefers-reduced-motion:reduce){.skin-portrait{transition:none;transform:none}}
+
+/* Aligned before/after portraits: one face position, three distinct models. */
+.slide-card:nth-child(1){--portrait-x:0%}
+.slide-card:nth-child(2){--portrait-x:50%}
+.slide-card:nth-child(3){--portrait-x:100%}
+.portrait-stage{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:end;min-height:0;flex:initial;margin:16px 0 20px}
+.skin-portrait{position:relative;grid-area:1/1;inset:auto;width:100%;max-width:300px;aspect-ratio:1;border-radius:24px;background-image:url('skin-models-grid.png');background-size:300% 200%;transform:none;transition:opacity .25s ease}
+.portrait-sad{background-position:var(--portrait-x) 0%;opacity:1;z-index:0}
+.portrait-happy{background-position:var(--portrait-x) 100%;opacity:var(--progress);z-index:1}
+@media(max-width:700px){.portrait-stage{min-height:0}.skin-portrait{width:100%;max-width:300px}}
+@media(prefers-reduced-motion:reduce){.skin-portrait{transition:none}}
+
+/* Only the academy model uses the nine-frame head-turn experiment. */
+.rotation-demo .skin-portrait{background-image:url('korean-turn-sequence.png');background-size:300% 300%;transition:none;mask-image:radial-gradient(ellipse 45% 48% at 50% 53%,#000 76%,transparent 100%)}
+.rotation-demo .portrait-sad{opacity:1}
+.rotation-demo .portrait-happy{opacity:var(--frame-mix,0)}
+
+/* The uploaded continuous take follows the handle; it never autoplays. */
+.skin-video{display:block;width:100%;max-width:300px;aspect-ratio:1;object-fit:cover;border-radius:24px;background:#e4ecd8;pointer-events:none;mask-image:linear-gradient(to bottom,#000 88%,transparent 100%)}
+.slide-instruction{font-size:14px}
+
+.skin-video-frames{position:relative;width:100%;max-width:300px;aspect-ratio:1;border-radius:24px;overflow:hidden;background-repeat:no-repeat;background-size:500% 500%;mask-image:linear-gradient(to bottom,#000 88%,transparent 100%)}
+
+.skin-frame-poster{display:block;width:100%;height:100%;object-fit:cover}
+.frames-ready .skin-frame-poster{visibility:hidden}
