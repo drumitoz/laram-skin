@@ -45,6 +45,7 @@ document.querySelectorAll('.paths > a').forEach((link,index)=>{
     frameSurface.style.backgroundPosition=`${(tile%5)*25}% ${Math.floor(tile/5)*25}%`;
   };
   let progress=0,pointer=null,origin=0,initial=0,completed=false,timer;
+  const activationGap=14;
   const travel=()=>Math.max(1,track.clientWidth-handle.offsetWidth-16);
   const paint=value=>{
     progress=Math.max(0,Math.min(1,value));
@@ -68,7 +69,16 @@ document.querySelectorAll('.paths > a').forEach((link,index)=>{
     pointer=event.pointerId;origin=event.clientX;initial=progress;
     track.classList.add('is-dragging');handle.setPointerCapture(pointer);
   });
-  handle.addEventListener('pointermove',event=>{if(event.pointerId===pointer)paint(initial+(event.clientX-origin)/travel());});
+  handle.addEventListener('pointermove',event=>{
+    if(event.pointerId!==pointer||completed)return;
+    paint(initial+(event.clientX-origin)/travel());
+    if((1-progress)*travel()<=activationGap){
+      const activePointer=pointer;
+      pointer=null;
+      if(handle.hasPointerCapture(activePointer))handle.releasePointerCapture(activePointer);
+      finish();
+    }
+  });
   handle.addEventListener('pointerup',event=>{if(event.pointerId!==pointer)return;pointer=null;track.classList.remove('is-dragging');if(progress>=.94)finish();});
   const cancel=event=>{if(event.pointerId!==pointer)return;pointer=null;track.classList.remove('is-dragging');};
   handle.addEventListener('pointercancel',cancel);
@@ -80,7 +90,7 @@ document.querySelectorAll('.paths > a').forEach((link,index)=>{
     if(event.key==='ArrowRight')paint(progress+.1);
     else if(event.key==='ArrowLeft')paint(progress-.1);
     else if(event.key==='Home')paint(0);
-    else if(event.key==='End')paint(1);
+    else if(event.key==='End')finish();
     else finish();
   });
   new ResizeObserver(()=>paint(progress)).observe(track);
