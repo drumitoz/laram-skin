@@ -41,7 +41,7 @@ root.querySelectorAll('.paths > .slide-card').forEach((card,index)=>{
     frameSurface.style.backgroundImage=`url("${frameSheets[sheet]}")`;
     frameSurface.style.backgroundPosition=`${(tile%5)*25}% ${Math.floor(tile/5)*25}%`;
   };
-  let progress=0,pointer=null,origin=0,initial=0,completed=false,timer;
+  let progress=0,pointer=null,origin=0,initial=0,completed=false,timer,returnTimer;
   const activationGap=14;
   const travel=()=>Math.max(1,track.clientWidth-handle.offsetWidth-16);
   const paint=value=>{
@@ -54,7 +54,14 @@ root.querySelectorAll('.paths > .slide-card').forEach((card,index)=>{
     handle.setAttribute('aria-valuetext',progress>=.94?'برای ورود رها کنید':`${Math.round(progress*100)} درصد؛ به راست بکشید`);
     track.classList.toggle('is-ready',progress>=.94);
   };
-  const reset=()=>{completed=false;track.classList.remove('is-complete','is-dragging');paint(0);};
+  const reset=()=>{completed=false;clearTimeout(returnTimer);track.classList.remove('is-complete','is-dragging','is-returning');paint(0);};
+  const returnToStart=()=>{
+    track.classList.remove('is-dragging');
+    track.classList.add('is-returning');
+    paint(0);
+    clearTimeout(returnTimer);
+    returnTimer=setTimeout(()=>track.classList.remove('is-returning'),520);
+  };
   const finish=()=>{
     if(completed)return;
     completed=true;paint(1);track.classList.remove('is-dragging');track.classList.add('is-complete');
@@ -64,6 +71,7 @@ root.querySelectorAll('.paths > .slide-card').forEach((card,index)=>{
   handle.addEventListener('pointerdown',event=>{
     if(completed||pointer!==null||event.button!==0)return;
     pointer=event.pointerId;origin=event.clientX;initial=progress;
+    clearTimeout(returnTimer);track.classList.remove('is-returning');
     track.classList.add('is-dragging');handle.setPointerCapture(pointer);
   });
   handle.addEventListener('pointermove',event=>{
@@ -76,8 +84,8 @@ root.querySelectorAll('.paths > .slide-card').forEach((card,index)=>{
       finish();
     }
   });
-  handle.addEventListener('pointerup',event=>{if(event.pointerId!==pointer)return;pointer=null;track.classList.remove('is-dragging');if(progress>=.94)finish();});
-  const cancel=event=>{if(event.pointerId!==pointer)return;pointer=null;track.classList.remove('is-dragging');};
+  handle.addEventListener('pointerup',event=>{if(event.pointerId!==pointer)return;pointer=null;returnToStart();});
+  const cancel=event=>{if(event.pointerId!==pointer)return;pointer=null;returnToStart();};
   handle.addEventListener('pointercancel',cancel);
   handle.addEventListener('lostpointercapture',cancel);
   handle.addEventListener('keydown',event=>{

@@ -7,3 +7,5 @@ body{background:var(--paper)}header{background:#e6edda}.hero{padding-block:48px 
 @media(max-width:1000px){.paths{gap:16px}.slide-instruction{font-size:12px;inset-inline:82px 6px}.slide-handle{width:60px}.paths h2{font-size:15px}.paths p{font-size:12px}}
 @media(max-width:700px){.path-band{border-radius:28px}.paths{gap:25px;padding-block:26px}.paths h2{font-size:17px}.paths p{font-size:14px}.slide-heading{margin-bottom:12px}.skin-slide{height:78px}.slide-handle{width:70px;height:62px}.slide-instruction{font-size:14px;left:90px;right:10px}.image-frame{border-radius:170px 170px 30px 30px}.founder{border-radius:30px}.shop{border-radius:28px}.hero{padding-block:32px 40px}}
 @media(prefers-reduced-motion:reduce){.slide-handle svg{animation:none}.skin-slide,.slide-handle{transition:none}}
+
+.is-returning .slide-handle{transition:transform .48s cubic-bezier(.22,1,.36,1)}
