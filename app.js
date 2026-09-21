@@ -62,7 +62,7 @@ document.querySelectorAll('.paths > a').forEach((link,index)=>{
     if(completed)return;
     completed=true;paint(1);track.classList.remove('is-dragging');track.classList.add('is-complete');
     handle.setAttribute('aria-valuetext','تکمیل شد؛ ورود');
-    timer=setTimeout(()=>{const target=document.querySelector(destination);if(target){history.replaceState(null,'',destination);target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}timer=setTimeout(reset,1200);},550);
+    timer=setTimeout(()=>{const target=document.querySelector(destination);if(target){history.replaceState(null,'',destination);target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});target.setAttribute('tabindex','-1');target.classList.add('slider-arrival-focus');target.addEventListener('blur',()=>target.classList.remove('slider-arrival-focus'),{once:true});target.focus({preventScroll:true});}timer=setTimeout(reset,1200);},550);
   };
   handle.addEventListener('pointerdown',event=>{
     if(completed||pointer!==null||event.button!==0)return;

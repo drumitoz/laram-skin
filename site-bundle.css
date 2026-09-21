@@ -157,3 +157,5 @@ header.is-compact .nav-maral{width:128px;opacity:1;transform:none}
 @keyframes hero-choice-float{0%,100%{transform:translateY(0);opacity:.88}50%{transform:translateY(-4px);opacity:1}}
 @media(hover:hover){.hero-background .actions>*:hover{animation:none}}
 @media(prefers-reduced-motion:reduce){.hero-background .actions .button,.hero-background .actions .text-link,.hero-background .hero-foot span{animation:none;opacity:1}}
+
+.slider-arrival-focus:focus{outline:none}
