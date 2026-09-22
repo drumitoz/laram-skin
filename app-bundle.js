@@ -66,7 +66,7 @@ root.querySelectorAll('.paths > .slide-card').forEach((card,index)=>{
     if(completed)return;
     completed=true;paint(1);track.classList.remove('is-dragging');track.classList.add('is-complete');
     handle.setAttribute('aria-valuetext','تکمیل شد؛ ورود');
-    timer=setTimeout(()=>{const target=root.querySelector(destination);if(target){try{history.replaceState(null,'',destination);}catch(_error){}target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});target.setAttribute('tabindex','-1');target.classList.add('slider-arrival-focus');target.addEventListener('blur',()=>target.classList.remove('slider-arrival-focus'),{once:true});target.focus({preventScroll:true});}timer=setTimeout(reset,1200);},550);
+    timer=setTimeout(()=>{if(!destination.startsWith('#')){window.location.assign(destination);return;}const target=root.querySelector(destination);if(target){try{history.replaceState(null,'',destination);}catch(_error){}target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});target.setAttribute('tabindex','-1');target.classList.add('slider-arrival-focus');target.addEventListener('blur',()=>target.classList.remove('slider-arrival-focus'),{once:true});target.focus({preventScroll:true});}timer=setTimeout(reset,1200);},550);
   };
   handle.addEventListener('pointerdown',event=>{
     if(completed||pointer!==null||event.button!==0)return;
